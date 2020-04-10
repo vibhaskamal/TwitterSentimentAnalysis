@@ -95,12 +95,12 @@ class TwitterClient(object):
 
 
 
-def main():
+def main(name, count_value):
     # creating object of TwitterClient Class 
     api = TwitterClient() 
 
     # calling function to get tweets 
-    tweets = api.get_tweets(query = 'Donald Trump', count = 200)
+    tweets = api.get_tweets(query = name, count = count_value)
     total_tweets_len = len(tweets)
 
     # picking positive tweets from tweets 
@@ -136,4 +136,4 @@ def main():
 
 if __name__ == "__main__": 
     # calling main function 
-    main() 
+    main('Donald Trump', 200) 
