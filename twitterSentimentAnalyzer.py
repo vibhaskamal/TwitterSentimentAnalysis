@@ -31,12 +31,14 @@ class TwitterClient(object):
 		except: 
 			print("Error: Authentication Failed") 
 
+
 	def clean_tweet(self, tweet): 
 		''' 
 		Utility function to clean tweet text by removing links, special characters 
 		using simple regex statements. 
 		'''
 		return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split()) 
+
 
 	def get_tweet_sentiment(self, tweet): 
 		''' 
@@ -52,6 +54,7 @@ class TwitterClient(object):
 			return 'neutral'
 		else: 
 			return 'negative'
+
 
 	def get_tweets(self, query, count = 10): 
 		''' 
@@ -71,6 +74,7 @@ class TwitterClient(object):
 
 				# saving text of tweet 
 				parsed_tweet['text'] = tweet.text 
+
 				# saving sentiment of tweet 
 				parsed_tweet['sentiment'] = self.get_tweet_sentiment(tweet.text) 
 
@@ -91,34 +95,41 @@ class TwitterClient(object):
 
 
 
-def main(): 
+def main():
     # creating object of TwitterClient Class 
     api = TwitterClient() 
+
     # calling function to get tweets 
     tweets = api.get_tweets(query = 'Donald Trump', count = 200)
-
-    # print(tweets)
+    total_tweets_len = len(tweets)
 
     # picking positive tweets from tweets 
-    ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
+    positive_tweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive']
+    positive_tweets_len = len(positive_tweets)
+
     # percentage of positive tweets 
-    print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
+    positive_tweets_percentage = 100*positive_tweets_len/total_tweets_len
+    print("Positive tweets percentage: {} %".format(positive_tweets_percentage))
+
     # picking negative tweets from tweets 
-    ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
+    negative_tweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative']
+    negative_tweets_len = len(negative_tweets) 
+
     # percentage of negative tweets 
-    print("Negative tweets percentage: {} %".format(100*len(ntweets)/len(tweets))) 
+    print("Negative tweets percentage: {} %".format(100*negative_tweets_len/total_tweets_len)) 
+
     # percentage of neutral tweets 
-    neutral_tweets = len(tweets) - (len(ptweets) + len(ntweets))
-    print("Neutral tweets percentage: {} %".format(100*neutral_tweets/len(tweets))) 
+    neutral_tweets = len(tweets) - (len(positive_tweets) + len(negative_tweets))
+    print("Neutral tweets percentage: {} %".format(100*neutral_tweets/total_tweets_len)) 
 
     # printing first 5 positive tweets 
     print("\n\nPositive tweets:") 
-    for tweet in ptweets[:10]: 
+    for tweet in positive_tweets[:10]: 
         print(tweet['text']) 
 
     # printing first 5 negative tweets 
     print("\n\nNegative tweets:") 
-    for tweet in ntweets[:10]: 
+    for tweet in negative_tweets[:10]: 
         print(tweet['text']) 
 
 if __name__ == "__main__": 
