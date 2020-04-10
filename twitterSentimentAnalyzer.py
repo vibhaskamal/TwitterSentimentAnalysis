@@ -4,6 +4,8 @@ import tweepy
 from tweepy import OAuthHandler 
 from textblob import TextBlob 
 
+from secrets import *
+
 class TwitterClient(object): 
 	''' 
 	Generic Twitter Class for sentiment analysis. 
@@ -13,10 +15,10 @@ class TwitterClient(object):
 		Class constructor or initialization method. 
 		'''
 		# keys and tokens from the Twitter Dev Console 
-		consumer_key = 'XXXXXXXXXXXXXXXXXXXXXXXX'
-		consumer_secret = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-		access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-		access_token_secret = 'XXXXXXXXXXXXXXXXXXXXXXXXX'
+		consumer_key = consumer_api_key
+		consumer_secret = consumer_api_secret_key
+		access_token = twitter_access_token
+		access_token_secret = twitter_access_token_secret
 
 		# attempt authentication 
 		try: 
@@ -87,33 +89,38 @@ class TwitterClient(object):
 			# print error (if any) 
 			print("Error : " + str(e)) 
 
+
+
 def main(): 
-	# creating object of TwitterClient Class 
-	api = TwitterClient() 
-	# calling function to get tweets 
-	tweets = api.get_tweets(query = 'Donald Trump', count = 200) 
+    # creating object of TwitterClient Class 
+    api = TwitterClient() 
+    # calling function to get tweets 
+    tweets = api.get_tweets(query = 'Donald Trump', count = 200)
 
-	# picking positive tweets from tweets 
-	ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
-	# percentage of positive tweets 
-	print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
-	# picking negative tweets from tweets 
-	ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
-	# percentage of negative tweets 
-	print("Negative tweets percentage: {} %".format(100*len(ntweets)/len(tweets))) 
-	# percentage of neutral tweets 
-	print("Neutral tweets percentage: {} %".format(100*len(tweets - ntweets - ptweets)/len(tweets))) 
+    # print(tweets)
 
-	# printing first 5 positive tweets 
-	print("\n\nPositive tweets:") 
-	for tweet in ptweets[:10]: 
-		print(tweet['text']) 
+    # picking positive tweets from tweets 
+    ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
+    # percentage of positive tweets 
+    print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
+    # picking negative tweets from tweets 
+    ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
+    # percentage of negative tweets 
+    print("Negative tweets percentage: {} %".format(100*len(ntweets)/len(tweets))) 
+    # percentage of neutral tweets 
+    neutral_tweets = len(tweets) - (len(ptweets) + len(ntweets))
+    print("Neutral tweets percentage: {} %".format(100*neutral_tweets/len(tweets))) 
 
-	# printing first 5 negative tweets 
-	print("\n\nNegative tweets:") 
-	for tweet in ntweets[:10]: 
-		print(tweet['text']) 
+    # printing first 5 positive tweets 
+    print("\n\nPositive tweets:") 
+    for tweet in ptweets[:10]: 
+        print(tweet['text']) 
+
+    # printing first 5 negative tweets 
+    print("\n\nNegative tweets:") 
+    for tweet in ntweets[:10]: 
+        print(tweet['text']) 
 
 if __name__ == "__main__": 
-	# calling main function 
-	main() 
+    # calling main function 
+    main() 
