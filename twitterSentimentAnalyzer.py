@@ -108,7 +108,7 @@ def main():
     positive_tweets_len = len(positive_tweets)
 
     # percentage of positive tweets 
-    positive_tweets_percentage = 100*positive_tweets_len/total_tweets_len
+    positive_tweets_percentage = round(100*positive_tweets_len/total_tweets_len, 2)
     print("Positive tweets percentage: {} %".format(positive_tweets_percentage))
 
     # picking negative tweets from tweets 
@@ -116,21 +116,23 @@ def main():
     negative_tweets_len = len(negative_tweets) 
 
     # percentage of negative tweets 
-    print("Negative tweets percentage: {} %".format(100*negative_tweets_len/total_tweets_len)) 
+    negative_tweets_percentage = round(100*negative_tweets_len/total_tweets_len, 2)
+    print("Negative tweets percentage: {} %".format(negative_tweets_percentage)) 
 
     # percentage of neutral tweets 
-    neutral_tweets = len(tweets) - (len(positive_tweets) + len(negative_tweets))
-    print("Neutral tweets percentage: {} %".format(100*neutral_tweets/total_tweets_len)) 
+    neutral_tweets_len = total_tweets_len - (positive_tweets_len + negative_tweets_len)
+    neutral_tweets_percentage = round(100*neutral_tweets_len/total_tweets_len, 2)
+    print("Neutral tweets percentage: {} %".format(neutral_tweets_percentage)) 
 
-    # printing first 5 positive tweets 
-    print("\n\nPositive tweets:") 
-    for tweet in positive_tweets[:10]: 
-        print(tweet['text']) 
+    # # printing first 5 positive tweets 
+    # print("\n\nPositive tweets:") 
+    # for tweet in positive_tweets[:10]: 
+    #     print(tweet['text']) 
 
-    # printing first 5 negative tweets 
-    print("\n\nNegative tweets:") 
-    for tweet in negative_tweets[:10]: 
-        print(tweet['text']) 
+    # # printing first 5 negative tweets 
+    # print("\n\nNegative tweets:") 
+    # for tweet in negative_tweets[:10]: 
+    #     print(tweet['text']) 
 
 if __name__ == "__main__": 
     # calling main function 
