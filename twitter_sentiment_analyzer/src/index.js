@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
 import ConsoleLogButton from './components/testButton.js'
-import TweeterUserInput from './components/TweeterUserInput.js'
-
+import TweeterUserInputClass from './components/TweeterUserInput.js'
 
 class UserInterface extends React.Component {
   constructor(props){
@@ -14,9 +12,10 @@ class UserInterface extends React.Component {
       tweeter: ''
     };
   }
-
+  
   render() {
     return (
+      
       <div>
         <header>
           <h1 class="text-center">
@@ -25,8 +24,11 @@ class UserInterface extends React.Component {
         </header>
         <br></br>
         <br></br>
-        <TweeterUserInput />
-        <ConsoleLogButton />  
+        <TweeterUserInputClass />
+        <br></br>
+        <div class="text-center">
+          <ConsoleLogButton />  
+        </div>
       </div>
     );
   }
