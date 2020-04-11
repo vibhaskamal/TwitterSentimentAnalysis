@@ -13,13 +13,16 @@ class UserInterface extends React.Component {
     };
 
     this.handleTweeterValueChange = this.handleTweeterValueChange.bind(this);
-
+    this.onClick = this.onClick.bind(this);
   }
 
   handleTweeterValueChange(event) {
     this.setState({tweeter: event.target.value});
   }
 
+  onClick(){
+    console.log(this.state.tweeter)
+  }
   
   render() {
     return (
@@ -33,12 +36,18 @@ class UserInterface extends React.Component {
         <br></br>
         <br></br>
         
-        <TweeterUserInputClass inputValue={this.state.tweeter} onChange={this.handleTweeterValueChange}  />
+        <TweeterUserInputClass 
+          inputValue={this.state.tweeter} 
+          onChange={this.handleTweeterValueChange}  
+        />
         
         <br></br>
         
         <div class="text-center">
-          <AnalyzeButton />  
+          <AnalyzeButton 
+            onClick = {this.onClick}
+            tweeter_name = {this.state.tweeter}
+          />  
         </div>
       
       </div>

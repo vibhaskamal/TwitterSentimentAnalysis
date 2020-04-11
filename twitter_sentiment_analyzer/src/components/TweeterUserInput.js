@@ -2,14 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-export default class TweeterUserInputClass extends React.Component {
+class TweeterUserInputClass extends React.Component {
     constructor(props){
         super(props);
-    }
-
-    handleTweeterValueChange(event) {
-        this.setState({inputValue: event.target.value});
-        this.props.tweeter_name = event.target.value
     }
 
     render(){
@@ -21,11 +16,17 @@ export default class TweeterUserInputClass extends React.Component {
                 <br></br>
                 <form  class="text-center">
                     <label>
-                        <input type="text" name="name" value={this.props.inputValue} onChange={this.props.onChange} />
+                        <input 
+                            type="text" 
+                            value={this.props.inputValue} 
+                            onChange={this.props.onChange} 
+                        />
                     </label>
                 </form>
             </div>
         );
     }
 }
+
+export default TweeterUserInputClass
 
