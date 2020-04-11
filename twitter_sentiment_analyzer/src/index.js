@@ -4,9 +4,17 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import ConsoleLogButton from './components/testButton.js'
+import TweeterUserInput from './components/TweeterUserInput.js'
 
 
-class Testing extends React.Component {
+class UserInterface extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      tweeter: ''
+    };
+  }
+
   render() {
     return (
       <div>
@@ -15,6 +23,9 @@ class Testing extends React.Component {
             Twitter Sentiment Analyzer
           </h1>
         </header>
+        <br></br>
+        <br></br>
+        <TweeterUserInput />
         <ConsoleLogButton />  
       </div>
     );
@@ -24,7 +35,7 @@ class Testing extends React.Component {
 
 
 ReactDOM.render(
-  <Testing />,
+  <UserInterface />,
   document.getElementById('root')
 );
 
