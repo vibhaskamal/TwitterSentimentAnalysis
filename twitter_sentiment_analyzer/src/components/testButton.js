@@ -4,14 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
 
-class ConsoleLogButton extends React.Component {
+class AnalyzeButton extends React.Component {
     render(){
         return (
             <Button 
                 variant="primary"
                 onClick={buttonOnPress}
             >
-                Testing    
+                Analyze    
             </Button>
 
         );
@@ -23,4 +23,4 @@ function buttonOnPress(){
 }
 
 
-export default ConsoleLogButton
+export default AnalyzeButton
