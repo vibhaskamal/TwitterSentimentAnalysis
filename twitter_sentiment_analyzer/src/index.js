@@ -4,12 +4,14 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AnalyzeButton from './components/AnalyzeButtonComponent.js'
 import TweeterUserInputClass from './components/TweeterUserInput.js'
+import PageHeading from './components/HeadingComponent.js'
 
 class UserInterface extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      tweeter: undefined
+      tweeter: undefined,
+      heading_value: 'Twitter Sentiment Analyzer'
     };
 
     this.handleTweeterValueChange = this.handleTweeterValueChange.bind(this);
@@ -27,11 +29,7 @@ class UserInterface extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <h1 class="text-center">
-            Twitter Sentiment Analyzer
-          </h1>
-        </header>
+        <PageHeading heading = {this.state.heading_value} />
 
         <br></br>
         <br></br>
@@ -46,7 +44,6 @@ class UserInterface extends React.Component {
         <div class="text-center">
           <AnalyzeButton 
             onClick = {this.onClick}
-            tweeter_name = {this.state.tweeter}
           />  
         </div>
       
