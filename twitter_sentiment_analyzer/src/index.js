@@ -2,16 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AnalyzeButton from './components/testButton.js'
+import AnalyzeButton from './components/AnalyzeButtonComponent.js'
 import TweeterUserInputClass from './components/TweeterUserInput.js'
 
 class UserInterface extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      tweeter: ''
+      tweeter: undefined
     };
+
+    this.handleTweeterValueChange = this.handleTweeterValueChange.bind(this);
+
   }
+
+  handleTweeterValueChange(event) {
+    this.setState({tweeter: event.target.value});
+  }
+
   
   render() {
     return (
@@ -25,7 +33,7 @@ class UserInterface extends React.Component {
         <br></br>
         <br></br>
         
-        <TweeterUserInputClass />
+        <TweeterUserInputClass inputValue={this.state.tweeter} onChange={this.handleTweeterValueChange}  />
         
         <br></br>
         
