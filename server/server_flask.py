@@ -5,6 +5,7 @@
 
 from flask import Flask, Response, request, jsonify
 from flask_cors import CORS
+from twitterSentimentAnalyzer import *
 
 app = Flask(__name__)
 CORS(app)
@@ -16,10 +17,13 @@ def hello_world():
 @app.route('/analyze', methods=['POST', 'GET'])
 def second():
     param = request.args.get('values')
-    param = int(param)
-    val = param + 20
+    # param = int(param)
+    # val = param + 20
 
-    return jsonify({"data": val})
+    results = main(param)
+
+    # return jsonify({"data": val})
+    return jsonify({"data": results})
 
 
 
