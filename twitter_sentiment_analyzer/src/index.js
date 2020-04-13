@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AnalyzeButton from './components/AnalyzeButtonComponent.js'
 import TweeterUserInputClass from './components/TweeterUserInput.js'
 import PageHeading from './components/HeadingComponent.js'
+import GraphicVisualizer from './components/GraphicVisualizer.js';
 
 class UserInterface extends React.Component {
   constructor(props){
@@ -24,11 +25,14 @@ class UserInterface extends React.Component {
   }
 
   async onClick(){
-    let url = 'http://localhost:5000/analyze'
+    let url = 'http://localhost:5000/analyze';
     let response = await fetch(`${url}?values=${this.state.tweeter}`);
     let data = await response.json();
     this.setState({analysis_data: data});
     console.log('state data: ', this.state.analysis_data);    
+    if (this.state.analysis_data){
+      return <GraphicVisualizer data={this.state.analysis_data} />
+    }
 }
   
   render() {
@@ -51,6 +55,8 @@ class UserInterface extends React.Component {
             onClick = {this.onClick}
           />  
         </div>
+
+        {/* {this.onClick()} */}
       
       </div>
     );
