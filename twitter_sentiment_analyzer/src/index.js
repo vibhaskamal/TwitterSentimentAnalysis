@@ -26,20 +26,9 @@ class UserInterface extends React.Component {
   async onClick(){
     let url = 'http://localhost:5000/analyze'
     let response = await fetch(`${url}?values=${this.state.tweeter}`);
-      // .then((response) => response.json())
-      // .then((response) => console.log(response))
-      // .then((response) => this.setState({analysis_data: response}))
-
     let data = await response.json();
-    console.log('returned data: ', data);
-
-    // const json_data = await response_data.json();
-
-    // this.setState({analysis_data: json_data});
-    // if (response_data){
-    //   console.log('analysis data: ', this.state.analysis_data);
-    // }
-    
+    this.setState({analysis_data: data});
+    console.log('state data: ', this.state.analysis_data);    
 }
   
   render() {
