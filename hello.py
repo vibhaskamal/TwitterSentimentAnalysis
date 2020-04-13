@@ -8,35 +8,19 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-app.run(debug=True)
 
 @app.route('/', methods=['POST', 'GET'])
 def hello_world():
     # return 'Hello, World!'
     return jsonify({"data": "Hello World"})
 
-@app.route('/second', methods=['POST', 'GET'])
+@app.route('/analyze', methods=['POST', 'GET'])
 def second():
-    # return 'Hello, World!'
     param = request.args.get('values')
-    # param = param + 20
     param = int(param)
-
     val = param + 20
 
     return jsonify({"data": val})
-
-@app.route('/data', methods=['POST', 'GET'])
-def get_data():
-    print('Recieved from client: {}'.format(request.data))
-    return Response('We recieved something…')
-
-@app.route('/hellothere', methods=['GET'])
-def hello():
-    # jsonResp = {'jack': 4098, 'sape': 4139}
-    response_data = "Works"
-    print(response_data)
-    return response_data
 
 
 

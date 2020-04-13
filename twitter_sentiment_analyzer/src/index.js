@@ -41,7 +41,7 @@ class UserInterface extends React.Component {
 
   // Trying a new fetch call to pass arguments
   let x = 10
-  let url = 'http://localhost:5000/second'
+  let url = 'http://localhost:5000/analyze'
   fetch(`${url}?values=${x}`, {
     method: 'GET',
     headers : { 
