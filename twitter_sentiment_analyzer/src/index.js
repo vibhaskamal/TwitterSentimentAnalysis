@@ -11,7 +11,8 @@ class UserInterface extends React.Component {
     super(props);
     this.state = {
       tweeter: undefined,
-      heading_value: 'Twitter Sentiment Analyzer'
+      heading_value: 'Twitter Sentiment Analyzer',
+      analysis_data: undefined
     };
 
     this.handleTweeterValueChange = this.handleTweeterValueChange.bind(this);
@@ -22,17 +23,23 @@ class UserInterface extends React.Component {
     this.setState({tweeter: event.target.value});
   }
 
-  onClick(){
+  async onClick(){
     let url = 'http://localhost:5000/analyze'
-    fetch(`${url}?values=${this.state.tweeter}`, {
-      method: 'GET',
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-      .then((response) => response.json())
-      .then((response) => console.log(response))
+    let response = await fetch(`${url}?values=${this.state.tweeter}`);
+      // .then((response) => response.json())
+      // .then((response) => console.log(response))
+      // .then((response) => this.setState({analysis_data: response}))
+
+    let data = await response.json();
+    console.log('returned data: ', data);
+
+    // const json_data = await response_data.json();
+
+    // this.setState({analysis_data: json_data});
+    // if (response_data){
+    //   console.log('analysis data: ', this.state.analysis_data);
+    // }
+    
 }
   
   render() {
