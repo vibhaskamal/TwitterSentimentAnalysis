@@ -25,21 +25,6 @@ class UserInterface extends React.Component {
   onClick(){
     console.log(this.state.tweeter)
 
-    // This part works for GET request
-  //   fetch('http://localhost:5000/', {
-  //     method: 'GET',
-  //     headers : { 
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //      }
-  //   })
-  //     .then((response) => response.json())
-  //     .then((response) => console.log(response))
-  //     .then((response) => console.log('Try'))
-  // }
-  // Till here
-
-  // Trying a new fetch call to pass arguments
   let x = 10
   let url = 'http://localhost:5000/analyze'
   fetch(`${url}?values=${x}`, {
