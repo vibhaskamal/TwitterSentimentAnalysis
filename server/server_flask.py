@@ -17,12 +17,9 @@ def hello_world():
 @app.route('/analyze', methods=['POST', 'GET'])
 def second():
     param = request.args.get('values')
-    # param = int(param)
-    # val = param + 20
 
     results = main(param)
 
-    # return jsonify({"data": val})
     return jsonify({"data": results})
 
 

@@ -147,7 +147,8 @@ def main(name, count_value=200):
     # for tweet in negative_tweets[:10]:
     #     print(tweet['text'])
 
+
 if __name__ == "__main__":
-	# calling main function
-	ans = main('Donald Trump', 200)
-	print(ans)
+    # calling main function
+    ans = main('Donald Trump', 200)
+    print(ans)
