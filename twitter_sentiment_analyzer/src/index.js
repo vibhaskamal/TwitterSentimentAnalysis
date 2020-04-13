@@ -24,14 +24,85 @@ class UserInterface extends React.Component {
 
   onClick(){
     console.log(this.state.tweeter)
-    fetch('http://127.0.0.1:5000/')
-      .then((response) => {
-        console.log('sent')
-        // return response.json();
-      });
-      // .then((data) => {
-      //   console.log(data);
-      // });
+
+    // let temp_data = this.state.tweeter
+    var temp_data = {
+      name: this.state.tweeter
+    };
+
+    
+    // fetch('http://127.0.0.1:5000/')
+    //   .then((response) => {
+    //     console.log('sent from JS file')
+    //     console.log(response)
+    //     // return response.json();  
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //   });
+
+    fetch('http://localhost:5000/', {
+      method: 'GET',
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+      // .then(result=>result)
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .then((response) => console.log('Try'))
+      // .then(result=>result.json())
+      // .then((result) => { // responseData = undefined
+      //     console.log(result.json());
+      //  });
+
+      // .then(item=>console.log(item));
+      // .catch(e=>{
+      //   console.log(e);
+      //   return e;
+      // }
+      // );
+
+    // fetch('http://127.0.0.1:5000/', {
+    //     method: 'get',
+    //     dataType: 'json',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+    //   .then(result=>result.json());
+      // .then(response => response.json())
+      // .then((response) => { // responseData = undefined
+      //     console.log(response.json());
+      //  });
+
+
+    // fetch(`${window.origin}/guestbook/create-entry`, {
+    // fetch('http://127.0.0.1:5000/hello', {
+    //     method: "GET",
+    //     // body: JSON.stringify(temp_data),
+    //     headers: new Headers({
+    //       "content-type": "application/json"
+    //     })
+    //   })
+    //   .then(function(response) {
+    //     if (response.status !== 200) {
+    //       console.log(`Looks like there was a problem. Status code: ${response.status}`);
+    //       return;
+    //     }
+    //     response.json().then(function(data) {
+    //       console.log(data);
+    //     });
+    //   })
+    //   .catch(function(error) {
+    //     console.log("Fetch error: " + error);
+    // });
+
   }
   
   render() {
