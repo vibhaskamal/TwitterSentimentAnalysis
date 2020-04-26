@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import Chart from "react-google-charts";
+import '../index.css'
 
 
 class GraphicVisualizer extends React.Component {
@@ -10,7 +11,6 @@ class GraphicVisualizer extends React.Component {
     render(){
         return (
             <div class="text-center">
-                Hello
                 <Chart
                     width={'500px'}
                     height={'300px'}

@@ -41,7 +41,7 @@ class UserInterface extends React.Component {
 
     if (this.state.display_result) {
       result = (
-        <div>
+        <div class="text-center">
           <GraphicVisualizer twitter_data={this.state.analysis_data} />
         </div>
       )
@@ -87,5 +87,6 @@ ReactDOM.render(
 
 
 // Stretch goal(s)
-// 1) Add a spinner while the data is being fetched
+// 1) Center align chart
+// 2) Add a spinner while the data is being fetched
 
