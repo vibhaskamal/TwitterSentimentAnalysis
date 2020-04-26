@@ -13,7 +13,8 @@ class UserInterface extends React.Component {
     this.state = {
       tweeter: undefined,
       heading_value: 'Twitter Sentiment Analyzer',
-      analysis_data: undefined
+      analysis_data: undefined,
+      display_result: false
     };
 
     this.handleTweeterValueChange = this.handleTweeterValueChange.bind(this);
@@ -28,14 +29,26 @@ class UserInterface extends React.Component {
     let url = 'http://localhost:5000/analyze';
     let response = await fetch(`${url}?values=${this.state.tweeter}`);
     let data = await response.json();
-    this.setState({analysis_data: data});
+    this.setState({
+      analysis_data: data,
+      display_result: !this.state.display_result
+    });
     console.log('state data: ', this.state.analysis_data);    
-    if (this.state.analysis_data){
-      return <GraphicVisualizer data={this.state.analysis_data} />
-    }
+    // if (this.state.analysis_data){
+    //   return <GraphicVisualizer data={this.state.analysis_data} />
+    // }
 }
   
   render() {
+    let result = null;
+
+    if (this.state.display_result) {
+      result = (
+        <div>
+          <GraphicVisualizer />
+        </div>
+      )
+    }
     return (
       <div>
         <PageHeading heading = {this.state.heading_value} />
@@ -57,6 +70,7 @@ class UserInterface extends React.Component {
         </div>
 
         {/* {this.onClick()} */}
+        {result}
       
       </div>
     );

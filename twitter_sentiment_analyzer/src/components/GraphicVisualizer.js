@@ -9,7 +9,7 @@ class GraphicVisualizer extends React.Component {
     }
 
     render(){
-        console.log('props: ', this.props.data)
+        // console.log('props: ', this.props.data)
         return (
             <div class="text-center">
                 Hello
