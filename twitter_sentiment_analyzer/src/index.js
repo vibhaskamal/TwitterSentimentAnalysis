@@ -35,7 +35,14 @@ class UserInterface extends React.Component {
       display_result: !this.state.display_result
     });
 
-    console.log('state data: ', this.state.analysis_data);    
+
+    // console.log('state data: ', this.state.analysis_data);   
+    // let temp = JSON.stringify(this.state.analysis_data)
+    // console.log('try: ', temp);
+    // console.log('try1: ', temp["data"]); 
+    // console.log('try2: ', temp["negative"]); 
+    // console.log('try3: ', temp[0]["negative"]); 
+    // console.log('try4: ', this.state.analysis_data.data.negative);
 }
   
   render() {
@@ -44,7 +51,7 @@ class UserInterface extends React.Component {
     if (this.state.display_result) {
       result = (
         <div>
-          <GraphicVisualizer />
+          <GraphicVisualizer twitter_data={this.state.analysis_data} />
         </div>
       )
     }
@@ -87,4 +94,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+
+// Stretch goal(s)
+// 1) Add a spinner while the data is being fetched
 
