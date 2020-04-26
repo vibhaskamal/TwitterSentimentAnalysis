@@ -29,14 +29,13 @@ class UserInterface extends React.Component {
     let url = 'http://localhost:5000/analyze';
     let response = await fetch(`${url}?values=${this.state.tweeter}`);
     let data = await response.json();
+
     this.setState({
       analysis_data: data,
       display_result: !this.state.display_result
     });
+
     console.log('state data: ', this.state.analysis_data);    
-    // if (this.state.analysis_data){
-    //   return <GraphicVisualizer data={this.state.analysis_data} />
-    // }
 }
   
   render() {
@@ -49,6 +48,7 @@ class UserInterface extends React.Component {
         </div>
       )
     }
+
     return (
       <div>
         <PageHeading heading = {this.state.heading_value} />
@@ -69,7 +69,10 @@ class UserInterface extends React.Component {
           />  
         </div>
 
-        {/* {this.onClick()} */}
+        <br></br>
+        <br></br>
+        <br></br>
+
         {result}
       
       </div>
