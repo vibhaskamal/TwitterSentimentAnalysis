@@ -34,15 +34,6 @@ class UserInterface extends React.Component {
       analysis_data: data,
       display_result: !this.state.display_result
     });
-
-
-    // console.log('state data: ', this.state.analysis_data);   
-    // let temp = JSON.stringify(this.state.analysis_data)
-    // console.log('try: ', temp);
-    // console.log('try1: ', temp["data"]); 
-    // console.log('try2: ', temp["negative"]); 
-    // console.log('try3: ', temp[0]["negative"]); 
-    // console.log('try4: ', this.state.analysis_data.data.negative);
 }
   
   render() {
